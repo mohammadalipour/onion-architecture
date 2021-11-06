@@ -1,0 +1,1 @@
+*/2 * * * * cd /var/www && /usr/local/bin/php bin/console sync:currency:rate:command >>/var/log/cron.log 2>&1

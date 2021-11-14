@@ -10,7 +10,7 @@ class CreatePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function test_can_create_product()
+    public function test_can_create_page()
     {
         $faker = Factory::create();
 
@@ -18,8 +18,8 @@ class CreatePageTest extends TestCase
         $model->name = $faker->words(3, true);
 
         $command = $this->app->make(ICreatePage::class);
-        $product = $command->execute($model);
+        $page = $command->execute($model);
 
-        self::assertEquals($product->name, $model->name);
+        self::assertEquals($page->name, $model->name);
     }
 }

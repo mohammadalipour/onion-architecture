@@ -3,7 +3,6 @@
 namespace Service\Page;
 
 
-use App\Http\Page\GetPageRequest;
 use Core\Page\Queries\IGetPage;
 use Service\Common\Controller;
 

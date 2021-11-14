@@ -3,15 +3,14 @@
 namespace App\Http\Product;
 
 use App\Http\Controllers\Controller;
-use Core\Product\Commands\ICreatePage;
-use Core\Product\Queries\IGetPage;
+use Core\Product\Commands\ICreateProduct;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Laravel\Jetstream\Jetstream;
 
 class ProductController extends Controller
 {
-    public function index(GetProductPaginationRequest $request, IGetPage $query): Response
+    public function index(GetProductPaginationRequest $request, ICreateProduct $query): Response
     {
         $pagination = $query->execute($request->data());
 
@@ -20,7 +19,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store(CreateProductRequest $request, ICreatePage $command): RedirectResponse
+    public function store(CreateProductRequest $request, ICreateProduct $command): RedirectResponse
     {
         $command->execute($request->data());
         return redirect()->route('home');

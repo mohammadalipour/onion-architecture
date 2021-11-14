@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Page;
+namespace Service\Page;
 
 use Core\Page\Queries\GetPageModel;
 use Illuminate\Foundation\Http\FormRequest;

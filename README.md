@@ -4,7 +4,7 @@
 
 As part of this project, I've created a boilerplate Clean Architecture (onion architecture)for the Laravel framework. it's powered by the latest version of PHP
 
-![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+![Clean Architecture](https://tech.ovoenergy.com/content/images/2018/12/OnionLayersLabelled-2.png)
 
 The Onion Architecture relies heavily on the Dependency Inversion principle.  The application core needs implementation of core interfaces, and if those implementing classes reside at the edges of the application, we need some mechanism for injecting that code at runtime so the application can do something useful.
 

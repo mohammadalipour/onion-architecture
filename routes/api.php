@@ -1,27 +1,10 @@
 <?php
 
-use Dingo\Api\Routing\Router;
+use Illuminate\Support\Facades\Route;
 
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-/* @var Router $api */
-$api = app(Router::class);
-
-$api->group([
-    'version' => 'v1',
-    'middleware' => 'api.auth',
-    'namespace' => 'Service',
-], function (Router $api) {
-    $api->get('home', 'Page\PageController@index');
-    $api->get('products', 'Product\ProductController@index');
-    $api->post('products', 'Product\ProductController@store');
+Route::group(['prefix' => 'v1', 'middleware' => 'throttle:100,1'], function () {
+    Route::get('products', [\Service\Product\ProductController::class, 'index']);
+    Route::post('product', [\Service\Product\ProductController::class, 'store']);
+    Route::get('index', [\Service\Page\PageController::class, 'index']);
 });

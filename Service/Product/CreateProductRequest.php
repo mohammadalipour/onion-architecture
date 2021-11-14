@@ -2,6 +2,7 @@
 
 namespace Service\Product;
 
+use Core\Product\Commands\CreatePageModel;
 use Core\Product\Commands\CreateProductModel;
 use Illuminate\Foundation\Http\FormRequest;
 

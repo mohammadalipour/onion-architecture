@@ -1,28 +1,29 @@
 <?php
 
-namespace Infrastructure\Product;
+namespace Infrastructure\Page;
 
-use Core\Product\Queries\GetPageModel;
+use Core\Page\Queries\GetPageModel;
+use Core\Page\Repositories\IPageRepository;
 use Core\Product\Queries\GetProductPaginationModel;
 use Core\Product\Repositories\IProductRepository;
+use Domain\Page\Page;
 use Domain\Product\Product;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Infrastructure\Repository\Repository;
 
-class ProductRepository extends Repository implements IProductRepository
+class PageRepository extends Repository implements IPageRepository
 {
     protected function model(): string
     {
-        return Product::class;
+        return Page::class;
     }
 
-    public function getProductsPagination(GetProductPaginationModel $model): LengthAwarePaginator
+    public function getPage(GetPageModel $model)
     {
         if ($model->name) {
             $this->addCriteria(new NameCriteria($model->name));
         }
 
-        $this->addCriteria(new OrderByLatest());
-        return $this->paginator(50, $model->page);
+        return $this->first();
     }
 }

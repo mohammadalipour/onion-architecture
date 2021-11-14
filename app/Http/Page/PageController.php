@@ -3,17 +3,18 @@
 namespace App\Http\Page;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
+use Core\Page\Queries\IGetPage;
+use Inertia\Response;
+use Laravel\Jetstream\Jetstream;
 
 class PageController extends Controller
 {
-    public function index()
+    public function index(GetPageRequest $request, IGetPage $query): Response
     {
-        return view('welcome');
-    }
+        $page = $query->execute($request->data());
 
-    public function test()
-    {
-        return new JsonResponse(['hi'=>'world']);
+        return Jetstream::inertia()->render($request, 'Home', [
+            'page' => $page
+        ]);
     }
 }

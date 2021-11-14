@@ -13,7 +13,6 @@ class CreateProductRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'required|image',
         ];
     }
 
@@ -23,7 +22,6 @@ class CreateProductRequest extends FormRequest
         $model->name = $this->input('name');
         $model->description = $this->input('description');
         $model->price = floatval($this->input('price'));
-        $model->image = $this->file('image');
         return $model;
     }
 }

@@ -6,7 +6,6 @@ services:
         build:
             context: ./DockerFile/nginx
         container_name: ${COMPOSE_PROJECT_NAME}_nginx
-        restart: always
         ports:
             - 8000:80
         depends_on:

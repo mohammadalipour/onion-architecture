@@ -2,6 +2,7 @@
 
 namespace Service\Product;
 
+use Core\Product\Queries\GetPageModel;
 use Core\Product\Queries\GetProductPaginationModel;
 use Illuminate\Foundation\Http\FormRequest;
 
